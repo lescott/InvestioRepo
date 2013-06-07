@@ -1,5 +1,5 @@
 /*
- * Sifteo SDK Example.
+ * Investio v0.2, a game prototype by Lauren E. Scott.
  */
 
 #include <sifteo.h>
