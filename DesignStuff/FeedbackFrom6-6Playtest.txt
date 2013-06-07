@@ -1,0 +1,9 @@
+Feedback from 6/6 Playtest:
+
+- Make sure that the numbers update instantaneously (done!)
+- Tilt and press to move screens as opposed to just tilt (done!)
+- Put Sell and Buy on two ends of the screen, to cut down on amount of screens and to increase intuitiveness
+- Put market price on each Buy/Sell screen
+- Put Money on each screen (?)
+- Check/test win condition
+- Display money of each player at the end (done!)

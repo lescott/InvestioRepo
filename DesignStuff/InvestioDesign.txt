@@ -1,0 +1,23 @@
+Investio
+
+- 3-commodity market: Corn, Coffee, and Cloth.
+- Each cube represents a player in the market, starting out with $200 for trading or saving. Each cube has:
+	* View of current money.
+	* View of current market price of Corn, Coffee and Cloth (on one screen, in a list).
+	* 3 screens, each for Buy/Sell Corn, Buy/Sell Coffee, and Buy/Sell Cloth (to toggle, press screen).
+	* View of savings account: if you press screen, can deposit some of your current money into savings. Once in savings, accrues a bit of interest but can't be taken out for trading for the rest of the game.
+	** View of "current events" screen. Each 15 seconds, a new current event displays that will cause changes to the market during the next turn.
+- The base represents the market. It has a certain amount of Corn, Coffee, and Cloth that players can buy directly from it. Once it runs out, it is out for good.
+- Players can:
+	* Deposit money into their savings account by pressing on the Savings screen.
+	* Buy or Sell Corn, Coffee or Cloth from the market by toggling Buy/Sell on and pressing the cube when next to the market.
+	* Buy or Sell Corn, Coffee or Cloth from fellow players.
+- The market (base) begins with a certain number of Corn, Coffee and Cloth with their respective market prices at the beginning of the game.
+- After each 15 seconds, the market prices change. This change takes into account:
+	* The activity of players. If they are buying a lot very quickly, then the price will go up significantly. If they are selling a lot, then the price will go down.
+	* An arbitrary random value simulating random fluctuations in the market. Should be a small value.
+	** A value according to the previous turn's current event.
+- Players should communicate to each other about what they want to buy and sell with each other.
+
+- At the end of the game, lists out the players with the top 3 amounts of money.
+	
