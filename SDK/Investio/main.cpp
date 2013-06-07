@@ -350,9 +350,9 @@ private:
         LOG("Current screen is: %d\n", screens[id]);
         writeScreen(id);
         
-        if (screens[id] == SAVINGS && tiltedRight == false && tiltedLeft == false ) {
-        	player_savings[id] = player_savings[id] + 10;
-        	player_money[id] = player_money[id] - 10;
+        if (screens[id] == SAVINGS && tiltedRight == false && tiltedLeft == false && player_money[id] > 0 && cube.isTouching() == 1) {
+        	player_savings[id] = player_savings[id] + 50;
+        	player_money[id] = player_money[id] - 50;
         }
 /*
         String<32> str;
@@ -842,7 +842,7 @@ void main()
         			vid[j].bg0rom.text(vec(1,6), str);
         			money_str1 << "Your money: ";
         			vid[j].bg0rom.text(vec(1,8), money_str1);
-        			money_str2 << "$ " << player_money[j];
+        			money_str2 << "$ " << (player_money[j] + player_savings[j]);
         			vid[j].bg0rom.text(vec(1,10), money_str2);
         		}
         		money_str1.clear();
@@ -852,7 +852,7 @@ void main()
         	clear1.clear();
         	win << "You win!";
         	money_str1 << "Your money: ";
-        	money_str2 << "$ " << player_money[winning_player];
+        	money_str2 << "$ " << (player_money[winning_player] + player_savings[winning_player]);
         	vid[winning_player].bg0rom.text(vec(1,6), win);
         	vid[winning_player].bg0rom.text(vec(1,8), money_str1);
         	vid[winning_player].bg0rom.text(vec(1,10), money_str2);
