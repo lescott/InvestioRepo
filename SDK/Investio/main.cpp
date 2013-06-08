@@ -77,50 +77,47 @@ public:
     void computeMarketPrices(int elapsedSeconds)
     {
     	switch (elapsedSeconds) {
-    		case 15:
+    		case 20:
     			market_prices[CORN] = market_prices[CORN] * 1.2;
     			market_prices[COFFEE] = market_prices[COFFEE] * 1.4;
     			market_prices[CLOTH] = market_prices[CLOTH] * 1.1;
     			break;
-    		case 30:
+    		case 40:
     			market_prices[CORN] = market_prices[CORN] * 1.6;
     			market_prices[COFFEE] = market_prices[COFFEE] * 1.2;
     			market_prices[CLOTH] = market_prices[CLOTH] * 1;
     			break;
-    		case 45:
+    		case 60:
     			market_prices[CORN] = market_prices[CORN] * 1.5;
     			market_prices[COFFEE] = market_prices[COFFEE] * 0.3;
     			market_prices[CLOTH] = market_prices[CLOTH] * 1.2;
     			break;
-    		case 60:
+    		case 80:
     			market_prices[CORN] = market_prices[CORN] * 1.5;
     			market_prices[COFFEE] = market_prices[COFFEE] * 1.3;
     			market_prices[CLOTH] = market_prices[CLOTH] * 1.5;
     			break;
-    		case 75:
+    		case 100:
     			market_prices[CORN] = market_prices[CORN] * 1.3;
     			market_prices[COFFEE] = market_prices[COFFEE] * 1.1;
     			market_prices[CLOTH] = market_prices[CLOTH] * 0.7;
     			break;
-    		case 90:
+    		case 110:
     			market_prices[CORN] = market_prices[CORN] * 0.5;
     			market_prices[COFFEE] = market_prices[COFFEE] * 1;
     			market_prices[CLOTH] = market_prices[CLOTH] * 0.8;
     			break;
-    		case 105:
+    		case 120:
     			market_prices[CORN] = market_prices[CORN] * 0.1;
     			market_prices[COFFEE] = market_prices[COFFEE] * 1.7;
     			market_prices[CLOTH] = market_prices[CLOTH] * 1.4;
     			break;
-    		case 120:
+    		case 140:
     			endGame = true;
     			break;
     		default:
     			break;
     	}
-    	market_prices[CORN] = market_prices[CORN] * 2;
-    	market_prices[COFFEE] = market_prices[COFFEE] * 3;
-    	market_prices[CLOTH] = market_prices[CLOTH] * 0.5;
     }
     
         void computeSavings()
@@ -200,7 +197,7 @@ public:
     			str3.clear();
     			str4.clear();
     			str5.clear();
-    			str1 << "   Corn";
+    			str1 << "Corn   $" << player_money[id];
     			str2 << "Buy       Sell";
     			str3 << units_of_corn[id] << " units";
     			str4 << "Market price:";
@@ -223,7 +220,7 @@ public:
     			str2.clear();
     			str3.clear();
     			str4.clear();
-    			str1 << "   Coffee";
+    			str1 << "Coffee   $" << player_money[id];
     			str2 << "Buy       Sell";
     			str3 << units_of_coffee[id] << " units";
     			str4 << "Market price:";
@@ -246,7 +243,7 @@ public:
     			str2.clear();
     			str3.clear();
     			str4.clear();
-    			str1 << "   Cloth";
+    			str1 << "Cloth   $" << player_money[id];
     			str2 << "Buy       Sell";
     			str3 << units_of_cloth[id] << " units";
     			str4 << "Market price:";

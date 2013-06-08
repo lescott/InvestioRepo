@@ -4,6 +4,7 @@ Feedback from 6/6 Playtest:
 - Tilt and press to move screens as opposed to just tilt (done!)
 - Put Sell and Buy on two ends of the screen, to cut down on amount of screens and to increase intuitiveness (done!)
 - Put market price on each Buy/Sell screen (done!)
-- Put Money on each screen (?)
+- Put Money on each screen (done!)
+- Balance game numbers (done!)
 - Check/test win condition
 - Display money of each player at the end (done!)
