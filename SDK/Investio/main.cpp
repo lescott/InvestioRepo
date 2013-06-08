@@ -20,7 +20,7 @@ static VideoBuffer vid[CUBE_ALLOCATION];
 static TiltShakeRecognizer motion[CUBE_ALLOCATION];
 
 
-enum ScreenType { MONEY = 0, MARKET_PRICES, BUY_CORN, SELL_CORN, BUY_COFFEE, SELL_COFFEE, BUY_CLOTH, SELL_CLOTH, SAVINGS, CURR_EVENTS, MARKET };
+enum ScreenType { MONEY = 0, MARKET_PRICES, BSCORN, BSCOFFEE, BSCLOTH, SAVINGS, CURR_EVENTS, MARKET };
 int player_money[BASE+1];
 int player_savings[BASE+1];
 int units_of_corn[BASE+1];
@@ -149,8 +149,13 @@ public:
     			vid[id].bg0rom.text(vec(1,4), clear);
     			vid[id].bg0rom.text(vec(1,6), clear);
     			vid[id].bg0rom.text(vec(1,8), clear);
+    			vid[id].bg0rom.text(vec(1,12), clear);
+    			vid[id].bg0rom.text(vec(1,14), clear);
     			str1.clear();
     			str2.clear();
+    			str3.clear();
+    			str4.clear();
+    			str5.clear();
     			str1 << "Money";
     			vid[id].bg0rom.text(vec(1,3), str1);
     			str2 << "$ " << player_money[id];
@@ -166,8 +171,13 @@ public:
     			vid[id].bg0rom.text(vec(1,4), clear);
     			vid[id].bg0rom.text(vec(1,6), clear);
     			vid[id].bg0rom.text(vec(1,8), clear);
+    			vid[id].bg0rom.text(vec(1,12), clear);
+    			vid[id].bg0rom.text(vec(1,14), clear);
     			str1.clear();
     			str2.clear();
+    			str3.clear();
+    			str4.clear();
+    			str5.clear();
     			str1 << "Market Prices";
     			vid[id].bg0rom.text(vec(1,1), str1);
     			str2 << "Corn: $" << market_prices[CORN] << "\n";
@@ -187,10 +197,19 @@ public:
     			vid[id].bg0rom.text(vec(1,8), clear);
     			str1.clear();
     			str2.clear();
-    			str1 << "Buy Corn";
+    			str3.clear();
+    			str4.clear();
+    			str5.clear();
+    			str1 << "   Corn";
+    			str2 << "Buy       Sell";
+    			str3 << units_of_corn[id] << " units";
+    			str4 << "Market price:";
+    			str5 << "$" << market_prices[CORN];
     			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_corn[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
+    			vid[id].bg0rom.text(vec(1,6), str2);
+    			vid[id].bg0rom.text(vec(1,10), str3);
+    			vid[id].bg0rom.text(vec(1,12), str4);
+    			vid[id].bg0rom.text(vec(1,14), str5);
     			break;
     		case 3:
     			clear << "                  ";
@@ -200,10 +219,20 @@ public:
     			vid[id].bg0rom.text(vec(1,4), clear);
     			vid[id].bg0rom.text(vec(1,6), clear);
     			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Sell Corn";
+    			str1.clear();
+    			str2.clear();
+    			str3.clear();
+    			str4.clear();
+    			str1 << "   Coffee";
+    			str2 << "Buy       Sell";
+    			str3 << units_of_coffee[id] << " units";
+    			str4 << "Market price:";
+    			str5 << "$" << market_prices[COFFEE];
     			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_corn[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
+    			vid[id].bg0rom.text(vec(1,6), str2);
+    			vid[id].bg0rom.text(vec(1,10), str3);
+    			vid[id].bg0rom.text(vec(1,12), str4);
+    			vid[id].bg0rom.text(vec(1,14), str5);
     			break;
     		case 4:
     			clear << "                  ";
@@ -213,61 +242,41 @@ public:
     			vid[id].bg0rom.text(vec(1,4), clear);
     			vid[id].bg0rom.text(vec(1,6), clear);
     			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Buy Coffee";
+    			str1.clear();
+    			str2.clear();
+    			str3.clear();
+    			str4.clear();
+    			str1 << "   Cloth";
+    			str2 << "Buy       Sell";
+    			str3 << units_of_cloth[id] << " units";
+    			str4 << "Market price:";
+    			str5 << "$" << market_prices[CLOTH];
     			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_coffee[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
+    			vid[id].bg0rom.text(vec(1,6), str2);
+    			vid[id].bg0rom.text(vec(1,10), str3);
+    			vid[id].bg0rom.text(vec(1,12), str4);
+    			vid[id].bg0rom.text(vec(1,14), str5);
     			break;
     		case 5:
     			clear << "                  ";
     			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,3), clear);
     			vid[id].bg0rom.text(vec(1,10), clear);
     			vid[id].bg0rom.text(vec(1,4), clear);
     			vid[id].bg0rom.text(vec(1,6), clear);
     			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Sell Coffee";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_coffee[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			break;
-    		case 6:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Buy Cloth";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_cloth[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			break;
-    		case 7:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Sell Cloth";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_cloth[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			break;
-    		case 8:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
+    			vid[id].bg0rom.text(vec(1,12), clear);
+    			vid[id].bg0rom.text(vec(1,14), clear);
+    			str1.clear();
+    			str2.clear();
+    			str3.clear();
+    			str4.clear();
+    			str5.clear();
     			str1 << "Savings";
     			vid[id].bg0rom.text(vec(1,1), str1);
     			str2 << player_savings[id];
     			vid[id].bg0rom.text(vec(1,10), str2);
     			break;
-    		case 9:
+    		case 6:
     			clear << "                  ";
     			vid[id].bg0rom.text(vec(1,1), clear);
     			vid[id].bg0rom.text(vec(1,10), clear);
@@ -354,12 +363,6 @@ private:
         	player_savings[id] = player_savings[id] + 50;
         	player_money[id] = player_money[id] - 50;
         }
-/*
-        String<32> str;
-        str << "touch: " << cube.isTouching() <<
-            " (" << counters[cube].touch << ")\n";
-        vid[cube].bg0rom.text(vec(1,9), str);
-*/
     }
 
     void onAccelChange(unsigned id)
@@ -389,195 +392,10 @@ private:
             		LOG("Not tilted.\n");
             		break;
             }
-            
-/*             switch (tilt.y) {
-            	case 1:
-            		LOG("Just tilted up.\n");
-            	case -1:
-            		LOG("Just tilted down.\n");
-            	case 0:
-            		LOG("Not tilted.\n");
-            }
-*/
-            
-/*             switch (tilt.z) {
-            	case 1:
-            		LOG("Just tilted upright.\n");
-            	case -1:
-            		LOG("Just tilted upside down.\n");
-            	case 0:
-            		LOG("Not tilted.\n");
-            }
-*/            
-/*            
-            str << "tilt:"
-                << Fixed(tilt.x, 3)
-                << Fixed(tilt.y, 3)
-                << Fixed(tilt.z, 3) << "\n";
-
-            str << "shake: " << motion[id].shake;
-*/
         }
+    }
+            
 
-    }
-/*    
-    void writeScreen(unsigned id) {
-    	String<32> str1;
-    	String<32> str2;
-    	String<32> str3;
-    	String<32> str4;
-    	String<32> str5;
-    	String<64> clear;
-    	
-    	currentScreen = screens[id];
-    	
-    	switch (currentScreen) {
-    		case 0:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,3), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1.clear();
-    			str2.clear();
-    			str1 << "Money";
-    			vid[id].bg0rom.text(vec(1,3), str1);
-    			str2 << "$ " << player_money[id];
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			str5 << "Player " << id;
-    			vid[id].bg0rom.text(vec(1,1), str5);
-    			break;
-    		case 1:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,3), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1.clear();
-    			str2.clear();
-    			str1 << "Market Prices";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << "Corn: $" << market_prices[CORN] << "\n";
-    			vid[id].bg0rom.text(vec(1,4), str2);
-    			str3 << "Coffee: $" << market_prices[COFFEE] << "\n";
-    			vid[id].bg0rom.text(vec(1,6), str3);
-    			str4 << "Cloth: $" << market_prices[CLOTH] << "\n";
-    			vid[id].bg0rom.text(vec(1,8), str4);
-    			break;
-    		case 2:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,3), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1.clear();
-    			str2.clear();
-    			str1 << "Buy Corn";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_corn[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			break;
-    		case 3:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,3), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Sell Corn";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_corn[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			break;
-    		case 4:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,3), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Buy Coffee";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_coffee[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			break;
-    		case 5:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,3), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Sell Coffee";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_coffee[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			break;
-    		case 6:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Buy Cloth";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_cloth[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			break;
-    		case 7:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Sell Cloth";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << units_of_cloth[id] << " units";
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			break;
-    		case 8:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Savings";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << player_savings[id];
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			break;
-    		case 9:
-    			clear << "                  ";
-    			vid[id].bg0rom.text(vec(1,1), clear);
-    			vid[id].bg0rom.text(vec(1,10), clear);
-    			vid[id].bg0rom.text(vec(1,4), clear);
-    			vid[id].bg0rom.text(vec(1,6), clear);
-    			vid[id].bg0rom.text(vec(1,8), clear);
-    			str1 << "Current Events";
-    			vid[id].bg0rom.text(vec(1,1), str1);
-    			str2 << "No events!";
-    			vid[id].bg0rom.text(vec(1,10), str2);
-    			break;
-    		case MARKET:
-    			break;
-    		default:
-    			break;
-    	}
-    }
-    
-    */
     
     void screenManager(ScreenType currentScreen, unsigned firstID, unsigned firstSide, unsigned secondID, unsigned secondSide) {
     	auto neighbors = vid[firstID].physicalNeighbors();
@@ -592,78 +410,65 @@ private:
     			LOG("We are at the Market Prices screen.\n");
     			break;
     		case 2:
-    			LOG("We are at the Buy Corn screen.\n");
-    			if (neighbors.hasNeighborAt(TOP) && (screens[secondID] == SELL_CORN || screens[secondID] == MARKET) && player_money[firstID] >= 10 && units_of_corn[secondID] >= 10) {
+    			LOG("We are at the Buy/Sell Corn screen.\n");
+    			if (firstSide == LEFT && (secondSide == RIGHT || (secondSide == 0 && screens[secondID] == MARKET)) && (screens[secondID] == BSCORN || screens[secondID] == MARKET) && player_money[firstID] >= 10 && units_of_corn[secondID] >= 10) {
     				LOG("We have a seller for corn!!\n");
     				player_money[firstID] = player_money[firstID] - market_prices[CORN];
     				units_of_corn[firstID] = units_of_corn[firstID] + 10;
     				player_money[secondID] = player_money[secondID] + market_prices[CORN];
     				units_of_corn[secondID] = units_of_corn[secondID] - 10;
     			}
-    			LOG("Cube1 has %d corn. Cube2 has %d corn.\n Cube1 has %d money. Cube2 has %d money.\n", units_of_corn[firstID], units_of_corn[secondID], player_money[firstID], player_money[secondID]);
-    			break;
-    		case 3:
-    			LOG("We are at the Sell Corn screen.\n");
-    			if (neighbors.hasNeighborAt(TOP) && (screens[secondID] == BUY_CORN || screens[secondID] == MARKET) && player_money[secondID] >= 10 && units_of_corn[firstID] >= 10) {
-    				LOG("We have a buyer for corn!!\n");
+    			else if (firstSide == RIGHT && (secondSide == LEFT || (secondSide == 0 && screens[secondID] == MARKET)) && (screens[secondID] == BSCORN || screens[secondID] == MARKET) && player_money[secondID] >= 10 && units_of_corn[firstID] >= 10) {
     				player_money[firstID] = player_money[firstID] + market_prices[CORN];
     				units_of_corn[firstID] = units_of_corn[firstID] - 10;
     				player_money[secondID] = player_money[secondID] - market_prices[CORN];
     				units_of_corn[secondID] = units_of_corn[secondID] + 10;
     			}
+    			LOG("Cube1 has %d corn. Cube2 has %d corn.\n Cube1 has %d money. Cube2 has %d money.\n", units_of_corn[firstID], units_of_corn[secondID], player_money[firstID], player_money[secondID]);
+    			LOG("First side: %d   Second side: %d\n", firstSide, secondSide);
     			break;
-    		case 4:
-    			LOG("We are at the Buy Coffee screen.\n");
-    			if (neighbors.hasNeighborAt(TOP) && (screens[secondID] == SELL_COFFEE || screens[secondID] == MARKET) && player_money[firstID] >= 10 && units_of_coffee[secondID] >= 10) {
-    				LOG("We have a seller of coffee!!\n");
+    		case 3:
+    			LOG("We are at the Buy/Sell Coffee screen.\n");
+    			if (firstSide == LEFT && (secondSide == RIGHT || (secondSide == 0 && screens[secondID] == MARKET)) && (screens[secondID] == BSCOFFEE || screens[secondID] == MARKET) && player_money[firstID] >= 10 && units_of_coffee[secondID] >= 10) {
+    				LOG("We have a seller for corn!!\n");
     				player_money[firstID] = player_money[firstID] - market_prices[COFFEE];
     				units_of_coffee[firstID] = units_of_coffee[firstID] + 10;
     				player_money[secondID] = player_money[secondID] + market_prices[COFFEE];
     				units_of_coffee[secondID] = units_of_coffee[secondID] - 10;
     			}
-    			break;
-    		case 5:
-    			LOG("We are at the Sell Coffee screen.\n");
-    			if (neighbors.hasNeighborAt(TOP) && (screens[secondID] == BUY_COFFEE || screens[secondID] == MARKET) && player_money[secondID] > 10 && units_of_coffee[firstID] >= 10) {
-    				LOG("We have a buyer for coffee!!\n");
+    			else if (firstSide == RIGHT && (secondSide == LEFT || (secondSide == 0 && screens[secondID] == MARKET)) && (screens[secondID] == BSCOFFEE || screens[secondID] == MARKET) && player_money[secondID] >= 10 && units_of_coffee[firstID] >= 10) {
     				player_money[firstID] = player_money[firstID] + market_prices[COFFEE];
     				units_of_coffee[firstID] = units_of_coffee[firstID] - 10;
     				player_money[secondID] = player_money[secondID] - market_prices[COFFEE];
     				units_of_coffee[secondID] = units_of_coffee[secondID] + 10;
     			}
     			break;
-    		case 6:
+    		case 4:
     			LOG("We are at the Buy Cloth screen.\n");
-    			if (neighbors.hasNeighborAt(TOP) && (screens[secondID] == SELL_CLOTH || screens[secondID] == MARKET) && player_money[firstID] >= 10 && units_of_cloth[secondID] >= 10) {
-    				LOG("We have a seller for cloth!!\n");
+    			if (firstSide == LEFT && (secondSide == RIGHT || (secondSide == 0 && screens[secondID] == MARKET)) && (screens[secondID] == BSCLOTH || screens[secondID] == MARKET) && player_money[firstID] >= 10 && units_of_cloth[secondID] >= 10) {
+    				LOG("We have a seller for corn!!\n");
     				player_money[firstID] = player_money[firstID] - market_prices[CLOTH];
     				units_of_cloth[firstID] = units_of_cloth[firstID] + 10;
     				player_money[secondID] = player_money[secondID] + market_prices[CLOTH];
     				units_of_cloth[secondID] = units_of_cloth[secondID] - 10;
     			}
-    			break;
-    		case 7:
-    			LOG("We are at the Sell Cloth screen.\n");
-    			if (neighbors.hasNeighborAt(TOP) && (screens[secondID] == BUY_CLOTH || screens[secondID] == MARKET) && player_money[secondID] >= 10 && units_of_cloth[firstID] >= 10) {
-    				LOG("We have a buyer for cloth!!\n");
+    			else if (firstSide == RIGHT && (secondSide == LEFT || (secondSide == 0 && screens[secondID] == MARKET)) && (screens[secondID] == BSCLOTH || screens[secondID] == MARKET) && player_money[secondID] >= 10 && units_of_cloth[firstID] >= 10) {
     				player_money[firstID] = player_money[firstID] + market_prices[CLOTH];
     				units_of_cloth[firstID] = units_of_cloth[firstID] - 10;
     				player_money[secondID] = player_money[secondID] - market_prices[CLOTH];
     				units_of_cloth[secondID] = units_of_cloth[secondID] + 10;
     			}
     			break;
-    		case 8:
+    		case 5:
     			LOG("We are at the Savings screen.\n");
     			break;
-    		case 9:
+    		case 6:
     			LOG("We are at the Current Events screen.\n");
     			break;
     		default:
     			LOG("Where are we??\n");
     			break;
     	}
-    	
-    	
     }
 
 
@@ -710,20 +515,7 @@ private:
     void drawNeighbors(CubeID cube)
     {
         Neighborhood nb(cube);
-/*
-        String<64> str;
-        str << "nb "
-            << Hex(nb.neighborAt(TOP), 2) << " "
-            << Hex(nb.neighborAt(LEFT), 2) << " "
-            << Hex(nb.neighborAt(BOTTOM), 2) << " "
-            << Hex(nb.neighborAt(RIGHT), 2) << "\n";
-
-        str << "   +" << counters[cube].neighborAdd
-            << ", -" << counters[cube].neighborRemove
-            << "\n\n";
-*/
         BG0ROMDrawable &draw = vid[cube].bg0rom;
- //       draw.text(vec(1,6), str);
 
         drawSideIndicator(draw, nb, vec( 1,  0), vec(14,  1), TOP);
         drawSideIndicator(draw, nb, vec( 0,  1), vec( 1, 14), LEFT);
@@ -838,6 +630,9 @@ void main()
     			vid[j].bg0rom.text(vec(1,4), clear1);
     			vid[j].bg0rom.text(vec(1,6), clear1);
     			vid[j].bg0rom.text(vec(1,8), clear1);
+    			vid[j].bg0rom.text(vec(1,10), clear1);
+    			vid[j].bg0rom.text(vec(1,12), clear1);
+    			vid[j].bg0rom.text(vec(1,14), clear1);
     			if (j != winning_player) {
         			vid[j].bg0rom.text(vec(1,6), str);
         			money_str1 << "Your money: ";
