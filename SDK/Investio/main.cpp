@@ -192,6 +192,8 @@ public:
     			vid[id].bg0rom.text(vec(1,4), clear);
     			vid[id].bg0rom.text(vec(1,6), clear);
     			vid[id].bg0rom.text(vec(1,8), clear);
+    			vid[id].bg0rom.text(vec(1,12), clear);
+    			vid[id].bg0rom.text(vec(1,14), clear);
     			str1.clear();
     			str2.clear();
     			str3.clear();
@@ -216,6 +218,8 @@ public:
     			vid[id].bg0rom.text(vec(1,4), clear);
     			vid[id].bg0rom.text(vec(1,6), clear);
     			vid[id].bg0rom.text(vec(1,8), clear);
+    			vid[id].bg0rom.text(vec(1,12), clear);
+    			vid[id].bg0rom.text(vec(1,14), clear);
     			str1.clear();
     			str2.clear();
     			str3.clear();
@@ -239,6 +243,8 @@ public:
     			vid[id].bg0rom.text(vec(1,4), clear);
     			vid[id].bg0rom.text(vec(1,6), clear);
     			vid[id].bg0rom.text(vec(1,8), clear);
+    			vid[id].bg0rom.text(vec(1,12), clear);
+    			vid[id].bg0rom.text(vec(1,14), clear);
     			str1.clear();
     			str2.clear();
     			str3.clear();
@@ -280,6 +286,8 @@ public:
     			vid[id].bg0rom.text(vec(1,4), clear);
     			vid[id].bg0rom.text(vec(1,6), clear);
     			vid[id].bg0rom.text(vec(1,8), clear);
+    			vid[id].bg0rom.text(vec(1,12), clear);
+    			vid[id].bg0rom.text(vec(1,14), clear);
     			str1 << "Current Events";
     			vid[id].bg0rom.text(vec(1,1), str1);
     			str2 << "No events!";
