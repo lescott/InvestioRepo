@@ -368,13 +368,13 @@ private:
         counters[id].touch++;
         LOG("Touch event on cube #%d, state=%d\n", id, cube.isTouching());
         
-        if (tiltedRight == true && screens[id] < 9 && cube.isTouching() == 1) {
-        	screens[id]++;
-        }
+//        if (tiltedRight == true && screens[id] < 9 && cube.isTouching() == 1) {
+//        	screens[id]++;
+//        }
         
-        if (tiltedLeft == true && screens[id] > 0 && cube.isTouching() == 1) {
-        	screens[id]--;
-        }
+//        if (tiltedLeft == true && screens[id] > 0 && cube.isTouching() == 1) {
+//        	screens[id]--;
+//        }
         
         LOG("Current screen is: %d\n", screens[id]);
         writeScreen(id);
@@ -402,9 +402,15 @@ private:
             switch (tilt.x) {
             	case -1:
             		tiltedRight = true;
+            		if (screens[id] < 9)
+            			screens[id]++;
+            		writeScreen(id);
             		break;
             	case 1:
             		tiltedLeft = true;
+            		if (screens[id] > 0)
+            			screens[id]--;
+            		writeScreen(id);
             		break;
             	case 0:
             		tiltedRight = false;
